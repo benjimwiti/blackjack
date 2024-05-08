@@ -1,11 +1,11 @@
-console.log("hey");
-let startGameEl = document.getElementById("startGame");
-let cOne = document.getElementById("c1");
+//FETCHING ELEMENTS
+let startGameEl = document.querySelector("#start");
+let c1 = document.getElementById("c1-el");
 let sumEl = document.getElementById("sum-el");
 let tableDude = document.getElementById("message");
 let cardDisplayEl = document.getElementById("card-el");
 
-
+//AUXILLIARY FUCTIONS
 function rn(){
     return Math.floor(Math.random()*13)+1;
 }
@@ -18,16 +18,26 @@ function sumUp(arr) {
     return summed
 }
 //RENDERING THE GAME
-function renderGame () {
-    let cardOne = rn()
-    let cardTwo = rn()
+    //FUNCTION VARIABLES
+    let cards=[]
+    let cardValue=[]
+    let sum = 0
+    
+    //GAME TEST
+    renderGame()
+    let [cardone,cardtwo,cardthree,cardfour,cardfive] = cards
+    console.log(cards)
+    console.log(cardone)
+
+function renderGame () { //change to start game
     let state= true
     
-    //PUSH TO ARRAY
-    let cards=[]
-    cards.push(cardOne)
-    cards.push(cardTwo)
-    let sum = sumUp(cards)
+    //PUSH FIRST TWO TO ARRAY
+    cards.push(rn());
+    cards.push(rn())
+    
+    //SUM FIRST TWO
+    sum = sumUp(cards)
     
 
     //SETTING ACE AND PLUS 10 VALUE CARDS
@@ -58,7 +68,7 @@ function renderGame () {
 
     //RENDER GAME OUTPUT
     tableDude.textContent = heSays
-    sumEl.textContent = sum
+    sumEl.textContent = `Total Card Value: ${sum}`
 }
 
 function addCard() {
@@ -67,15 +77,14 @@ function addCard() {
     if (state===false) {
         heSays = `Cannot draw card, Another round?`
     } else {
-        cards[cards.length+1]=rn()
-        renderGame()
-        
+        cards.push(rn())
+        sum = sumUp(cards) 
     }
 }
 
 //CARDS DISPLAY
 let cardsDisplay = {
-    "1" : cOne.textContent= `<img src="./img/queen.png" alt="" height="200px" width="200px"></img>`,
+    "1" : "1",
     "2" : "2",
     "3" : "3",
     "4" : "4",
@@ -91,8 +100,8 @@ let cardsDisplay = {
 }
 
 function cardDisplay () {
-    for (let i=0; i<cards.length;i++) {
-        cardsDisplay["i"] 
+    for (let i=0; i<Object.keys(cardDisplay);i++) {
+        let cardNO = Object.keys(cardDisplay)[i];
 
         }
     }
@@ -103,10 +112,14 @@ function cardDisplay () {
 
     function cdTwo (arr) {
         for (let i=0; i<cd2.length;i++) {
-            if(cOne) {
-            cOne.textContent = cd2[i]
+            if(c1==true) {
+                console.log(c1)
+            c1.innerHTML = cd2[i]
             }
         }
+        
     }
 
+        cdTwo(cd2)
+        
 console.log("hey")
