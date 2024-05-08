@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLACKJACK-GAME</title>
+    <link rel="stylesheet" href="../src/output.css">
+    <script src="./index.js"></script>
+</head>
+<body class="h-screen bg-cover text-gray-300" style="background-image: url(./img/background.png);">
+    <section id="messageSec" class="h-1/5 flex justify-center items-center">
+        <div id="message">Hi, ill be your guide tonight</div>
+    </section>
+    
+    <section id="cards" class="grid justify-items-center grid-cols-4 grid-rows-1">
+        <figure>
+            <div class="" id="c1"> <img src="./img/queen.png" alt="" height="200px" width="200px"></div>
+            <figcaption id="cardOne"></figcaption>
+        </figure>
+        
+        <figure>
+            <div class="" id="queen"> <img src="./img/queen.png" alt="" height="200px" width="200px"></div>
+            <figcaption id="cardTwo"></figcaption>
+        </figure>
+    </section>
+    
+    <section id="cardsInfo" class="text-center">
+        <div id="sum-el">sum here</div>
+    </section>
+
+    <section id="buttons" class="border p-1">
+        <button id="startGame" onclick="renderGame()" class="border border-red-400 p-1">START GAME</button>
+        <button id="newCard" onclick="addCard()"></button>
+    </section>
+</body>
+</html>
