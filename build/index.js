@@ -1,9 +1,15 @@
 //FETCHING ELEMENTS
-let startGameEl = document.querySelector("#start");
 let c1 = document.getElementById("c1-el");
+let c2 = document.getElementById("c2-el");
+let c3 = document.getElementById("c3-el");
+let c4 = document.getElementById("c4-el");
 let sumEl = document.getElementById("sum-el");
 let tableDude = document.getElementById("message");
 let cardDisplayEl = document.getElementById("card-el");
+let valueElone = document.getElementById("value1")
+let valueEltwo = document.getElementById("value2")
+let valueElthree = document.getElementById("value3")
+let valueElfour = document.getElementById("value4")
 
 //AUXILLIARY FUCTIONS
 function rn(){
@@ -17,109 +23,123 @@ function sumUp(arr) {
     }
     return summed
 }
-//RENDERING THE GAME
+
+function valueUp () {
+    cardValue=[...cards]
+    for(let i=0; i<cards.length;i++) {
+        if (cards[i]===1) {
+            cardValue[i]=11
+        } else if (cards[i]>10) {
+            cardValue[i] = 10
+        } else {
+            cardValue[i]= cards[i]
+        }
+    }
+    valueElone.innerHTML = `Card value = ${cardValue[0]}`
+    valueEltwo.innerHTML = `Card value = ${cardValue[1]}` 
+    valueElthree.innerHTML = `Card value = ${cardValue[2]}` || `not yet`
+    valueElfour.innerHTML = `Card value = ${cardValue[3]}`
+}
+
+function addCard() {
+    if (state===true) {
+        cards.push(rn())
+        stateNcroupier()
+    } else {
+        tableDude.textContent = `cannot add card, Perhaps new round`
+    }
+}
+
+function newGame() {
+    cards=[]
+    cardValue=[]
+    sum = 0
+    startGame()
+}
+
+function stateNcroupier () {
+    valueUp()
+    sum = sumUp(cardValue)
+    if (sum === 21) {
+        heSays = `🎆You've got blackJack🎆`
+        state = false
+    } else if (sum < 21) {
+        heSays = "One more card could do the trick!"
+        state = true
+    } else if (sum > 21 ) {
+        state = false
+        heSays = `card value past 21, Another round?`
+    } else {
+        heSays = "Executing the else block"
+        state = false
+    }
+    renderFace()
+    tableDude.innerHTML = heSays
+    sumEl.textContent = `Total Card Value: ${sum}`
+    console.log(cards)
+    console.log(cardValue)
+}
+
     //FUNCTION VARIABLES
     let cards=[]
-    let cardValue=[]
+    let cardValue=[...cards]
     let sum = 0
-    
-    //GAME TEST
-    renderGame()
+    let state = true
     let [cardone,cardtwo,cardthree,cardfour,cardfive] = cards
     console.log(cards)
     console.log(cardone)
 
-function renderGame () { //change to start game
-    let state= true
-    
-    //PUSH FIRST TWO TO ARRAY
-    cards.push(rn());
+
+    function startGame () { 
+  if (sum == 0) {
     cards.push(rn())
-    
-    //SUM FIRST TWO
-    sum = sumUp(cards)
-    
-
-    //SETTING ACE AND PLUS 10 VALUE CARDS
-    function value() {
-        for(let i=0; i<cards.length; i++) {
-            if(i===1) {
-                cards[i] = 11
-            } else if(i>10) {
-                cards[i]=10
-            } 
-        }
-    }
-
-    //RUNNING VALUE
-    value()
-
-    //SETTING REPLIES BY TABLE GUY
-    if (sum<21) {
-        state = true
-        heSays = `Would you like to draw another card?`
-    } else if (sum==21) {
-        state = false
-        heSays = `You've got blackjack.`
-    } else {
-        state = false
-        heSays = `Another round?`
-    }
-
-    //RENDER GAME OUTPUT
-    tableDude.textContent = heSays
-    sumEl.textContent = `Total Card Value: ${sum}`
+    cards.push(rn())
+    stateNcroupier()
+  } else {
+        tableDude.textContent = `Try another option (yaani ..buttons)`
+  }
 }
 
-function addCard() {
-    
-    //ADDING CARDS
-    if (state===false) {
-        heSays = `Cannot draw card, Another round?`
-    } else {
-        cards.push(rn())
-        sum = sumUp(cards) 
-    }
-}
+
+
+
 
 //CARDS DISPLAY
-let cardsDisplay = {
-    "1" : "1",
-    "2" : "2",
-    "3" : "3",
-    "4" : "4",
-    "5" : "5",
-    "6" : "6",
-    "7" : "7",
-    "8" : "8",
-    "9" : "9",
-    "10" : "10",
-    "11" : "11",
-    "12" : "12",
-    "13" : "13",
-}
-
-function cardDisplay () {
-    for (let i=0; i<Object.keys(cardDisplay);i++) {
-        let cardNO = Object.keys(cardDisplay)[i];
-
-        }
-    }
-
-    let cd2= [
-        `<img src="./img/queen.png" alt="" height="200px" width="200px"></img>`,
+const face = [`<img src="./img/backface.png" alt="" height="60%" width="60%">`,
+    `<img src="./img/ace.png" alt="" height="60%" width="60%">`,
+    `<img src="./img/2.png" alt="" height="60%" width="60%">`,
+    `<img src="./img/3.png" alt="" height="60%" width="60%">`,
+    `<img src="./img/4.png" alt="" height="60%" width="60%">`,
+    `<img src="./img/5.png" alt="" height="60%" width="60%">`,
+    `<img src="./img/6.png" alt="" height="60%" width="60%">`,
+    `<img src="./img/7.png" alt="" height="60%" width="60%">`,
+    `<img src="./img/8.png" alt="" height="60%" width="60%">`,
+    `<img src="./img/9.png" alt="" height="60%" width="60%">`,
+    `<img src="./img/10.png" alt="" height="60%" width="60%">`,
+    `<img src="./img/jersey.png" alt="" height="60%" width="60%">`,
+    `<img src="./img/queen.png" alt="" height="60%" width="60%">`,
+    `<img src="./img/king.png" alt="" height="60%" width="60%">`,
     ]
 
-    function cdTwo (arr) {
-        for (let i=0; i<cd2.length;i++) {
-            if(c1==true) {
-                console.log(c1)
-            c1.innerHTML = cd2[i]
-            }
-        }
-        
-    }
 
-        cdTwo(cd2)
-        
+
+function renderFace () {
+    c1.innerHTML = face[makeIndex(cards, 0)]
+    c2.innerHTML = face[makeIndex(cards, 1)]
+    c3.innerHTML = face[makeIndex(cards, 2)]
+    c4.innerHTML = face[makeIndex(cards, 3)]  
+    if (cards[2] == undefined ) {
+        c3.innerHTML = face[0]
+        valueElthree.textContent = `\\\\`
+    } else{}
+    if (cards[3] === undefined) {
+        c4.innerHTML = face[0]
+        valueElfour.textContent = `\\\\`
+    }
+} 
+
+function makeIndex (arr, index) {
+    return arr[index]
+}
+
 console.log("hey")

@@ -5,32 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BLACKJACK-GAME</title>
     <link rel="stylesheet" href="../src/output.css">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jacquard+24&display=swap" rel="stylesheet">
 </head>
-<body class="h-screen bg-cover text-gray-300" style="background-image: url(./img/background.png);">
-    <section id="messageSec" class="h-1/5 flex justify-center items-center">
+<body class="h-screen bg-cover text-gray-300">
+    <section id="messageSec" class="h-1/5 flex justify-center items-center text-7xl font-semibold title">
         <div id="message">Hi, ill be your guide tonight</div>
     </section>
     
-    <section id="cards" class="grid justify-items-center grid-cols-4 grid-rows-1">
-        <figure>
-            <div class="" id="c1-el"> <img src="./img/queen.png" alt="" height="150px" width="150px"></div>
-            <figcaption id="cardOne"></figcaption>
+    <section id="cards" class="grid justify-items-center grid-cols-4">
+        <figure class="flex flex-col justify-center items-center">
+            <div class="flex justify-center" id="c1-el"> <img src="./img/backface.png" alt="" height="40%" width="40%"></div>
+            <figcaption id="value1"></figcaption>
         </figure>
         
-        <figure>
-            <div class="" id="queen"> <img src="./img/queen.png" alt="" height="150px" width="150px"></div>
-            <figcaption id="cardTwo"></figcaption>
+        <figure class="flex flex-col justify-center items-center">
+            <div class=" flex justify-center" id="c2-el"> <img src="./img/backface.png" alt="" height="40%" width="40%"></div>
+            <figcaption id="value2"></figcaption>
+        </figure>
+        
+        <figure class="flex flex-col justify-center items-center">
+            <div class=" flex justify-center" id="c3-el"> <img src="./img/backface.png" alt="" height="40%" width="40%"></div>
+            <figcaption id="value3"></figcaption>
+        </figure>
+        
+        <figure class="flex flex-col justify-center items-center">
+            <div class=" flex justify-center" id="c4-el"> <img src="./img/backface.png" alt="" height="40%" width="40%"></div>
+            <figcaption id="value4"></figcaption>
         </figure>
     </section>
     
     <section id="cardsInfo" class="text-center">
-        <div id="sum-el" class="text-white">sum here</div>
+        <div id="sum-el" class="text-slate-200 font-medium text-xl">sum here</div>
     </section>
 
-    <section id="buttons" class="border p-1">
-        <button id="start" onclick="renderGame()" class="border border-red-400 p-1">START GAME</button>
-        <button id="newCard" onclick="addCard()"></button>
+    <section id="buttons" class="border p-1 flex flex-row justify-around">
+        <button id="start" onclick="startGame()" class="border border-red-400">START GAME</button>
+        <button id="addCard-el" onclick="addCard()" class="border border-red-400">ADD CARD</button>
+        <button id="newGame-el" onclick="newGame()" class="border border-red-400">NEW GAME</button>
     </section>
 </body>
 </html>

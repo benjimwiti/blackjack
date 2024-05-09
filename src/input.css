@@ -1,3 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+button {
+    padding: 1rem 2.5rem;
+    &:hover {
+        @apply bg-slate-900;
+    }
+    border-radius: 0.8rem ;
+    min-width: 4rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: hsla(120, 6%, 20%, 0.904);
+}
+
+body { 
+    transition: all 4s;
+    background-image: url(../build/img/bg-image-2.jpg);
+}
+
+
+
+.title {
+    font-family: "Jacquard 24", system-ui;
+}
+
+.jacquard-24-regular {
+    font-family: "Jacquard 24", system-ui;
+    font-weight: 100;
+    font-style: normal;
+}
+
+body:hover {
+    cursor:grabbing;
+    background-image: url(../build/img/background.png);
+}
+
+figcaption {
+    font-family: "Jacquard 24", system-ui;
+    font-size: x-large;
+}
