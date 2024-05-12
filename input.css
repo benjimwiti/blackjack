@@ -15,7 +15,7 @@ button {
 
 body { 
     transition: all 4s;
-    background-image: url(../build/img/bg-image-2.jpg);
+    background-image: url(./img/bg-image-2.jpg);
 }
 
 
@@ -32,7 +32,7 @@ body {
 
 body:hover {
     cursor:grabbing;
-    background-image: url(../build/img/background.png);
+    background-image: url(./img/background.png);
 }
 
 figcaption {
